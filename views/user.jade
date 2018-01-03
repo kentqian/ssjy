@@ -1,0 +1,38 @@
+html
+	head
+		title #{user.staff_name}的个人设置
+		meta(http-equiv="Content-Type" content="text/html; charset=utf-8")
+		script(type="text/javascript" src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js")
+		//- script(type="text/javascript" src="./javascripts/jquery.js")
+		script(type="text/javascript" src="http://apps.bdimg.com/libs/bootstrap/3.3.4/js/bootstrap.min.js")
+		//- script(type="text/javascript" src="./javascripts/bootstrap.js")
+		script(type="text/javascript" src="./javascripts/main_helper_function.js")
+		script(type="text/javascript" src="./javascripts/user.js")
+		link(type="text/css" rel="stylesheet" href="http://apps.bdimg.com/libs/bootstrap/3.3.4/css/bootstrap.min.css")
+		//- link(type="text/css" rel="stylesheet" href="./stylesheets/bootstrap.css")
+		link(type="text/css" rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/4.7.0/css/font-awesome.css")
+		//- link(type="text/css" rel="stylesheet" href="./stylesheets/font-awesome.css")
+		link(type="text/css" rel="stylesheet" href="./stylesheets/style.css")
+	body
+		nav.navbar.navbar-default(role="navigation")
+			div.container
+				div.navbar-header
+					a.navbar-brand(href="/") 
+						img(src="./images/3.png" width="150px" height="30px")
+				ul.nav.navbar-nav.navbar-right
+					li
+						a(href="/users") <i class="fa fa-user-circle" aria-hidden="true"></i> #{user.staff_name}
+					li
+						a#btn_logout(href="#" onclick="logout()") <i class="fa fa-sign-out" aria-hidden="true"></i> 登 出
+		div.container
+			h2 密码修改
+			hr
+			div.col-md-6.col-md-offset-3(style="border-radius: 4px; border:2px solid WhiteSmoke;")
+				h4 旧密码
+				input#old_p.form-control(type="password" name="password")
+				h4 新密码
+				input#new_p.form-control(type="password" name="password")
+				h4 确认密码
+				input#confirm_p.form-control(type="password" name="password")
+				div.col-md-2.col-md-offset-5
+					button#update_p.btn.btn-lg.btn-default(type="button" style="margin:10px 0 10px 0;") 确认

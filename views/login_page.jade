@@ -1,0 +1,37 @@
+html
+	head
+		title 苏胜教育查询系统
+		meta(http-equiv="Content-Type" content="text/html; charset=utf-8")
+		link(rel="stylesheet" type="text/css" href="./stylesheets/login.css")
+		script(type="text/javascript" src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js")
+		//- script(type="text/javascript" src="./javascripts/jquery.js")
+		script(type="text/javascript" src="javascripts/login.js")
+	body
+		h1 苏胜教育报名及查询系统
+			sup V2017
+		div.login
+			div#web_qr_login.web_qr_login
+				div#web_login.web_login
+					div.login_form
+						form#login_form.loginForm(method="post" action="../" name="loginform" accept-charset="utf-8")
+							if error_hint
+								div.cue
+									font(color = 'red')
+										if login_error == 'pwd_error'
+											b 用户与密码不匹配！
+										else if login_error == 'no_user'
+											b 用户不存在
+
+							div#uinArea.uinArea
+								label.input-tips(for="u") 账号：
+								div#uArea.inputOuter
+									input#u.inputstyle(type="text" name="username")
+							div#pwdArea.pwdArea
+								label.input-tips(for="p") 密码：
+								div#pArea.inputOuter
+									input#p.inputstyle.disable_input_type(type="password" name="password")
+						div(style="padding-left:50px;margin-top:20px;")
+							button#login_submit.button_blue(style="width:150px;") 登 录
+		div.suggestion *推荐使用ie8或以上版本ie浏览器或Chrome内核浏览器访问本站
+
+

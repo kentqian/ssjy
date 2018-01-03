@@ -1,0 +1,196 @@
+html
+	head
+		title #{user.staff_name}, 您好！
+		meta(http-equiv="Content-Type" content="text/html; charset=utf-8")
+		script(type="text/javascript" src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js")
+		//- script(type="text/javascript" src="./javascripts/jquery.js")
+		script(type="text/javascript" src="http://apps.bdimg.com/libs/bootstrap/3.3.4/js/bootstrap.min.js")
+		//- script(type="text/javascript" src="./javascripts/bootstrap.js")
+		script(type="text/javascript" src="./javascripts/main_helper_function.js")
+		script(type="text/javascript" src="./javascripts/reception.js")
+		link(type="text/css" rel="stylesheet" href="http://apps.bdimg.com/libs/bootstrap/3.3.4/css/bootstrap.min.css")
+		//- link(type="text/css" rel="stylesheet" href="./stylesheets/bootstrap.css")
+		link(type="text/css" rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/4.7.0/css/font-awesome.css")
+		//- link(type="text/css" rel="stylesheet" href="./stylesheets/font-awesome.css")
+		link(type="text/css" rel="stylesheet" href="./stylesheets/style.css")
+	body
+		nav.navbar.navbar-default(role="navigation")
+			div.container
+				div.navbar-header
+					a.navbar-brand(href="/") 
+						img(src="./images/3.png" width="150px" height="30px")
+				ul.nav.navbar-nav.navbar-right
+					li
+						a(href="/users") <i class="fa fa-user-circle" aria-hidden="true"></i> #{user.staff_name}
+					li
+						a#btn_logout(href="#" onclick="logout()") <i class="fa fa-sign-out" aria-hidden="true"></i> 登 出
+		div.container-fluid
+			div.row
+				div.col-md-3
+					div.search_section
+						div.form-group
+							label(for="search_student") 学生查询：
+							div.row
+								div.col-md-8
+									input#search_student.form-control(type="text" placeholder="请输入学生姓名")
+								div.col-md-4
+									button#search_student_btn.btn.btn-info(type="button") 查询
+						div.form-group
+							label(for="search_teacher") 教师查询：
+							div.row
+								div.col-md-8
+									input#search_teacher.form-control(type="text" placeholder="请输入教师姓名")
+								div.col-md-4
+									button#search_teacher_btn.btn.btn-info(type="button") 查询
+						div.form-group
+							div.row
+								div.col-md-4
+									label(for="search_subject") 学科：
+								div.col-md-4
+									label(for="search_grade") 年级：
+							div.row
+								div.col-md-4
+									select#search_subject.form-control
+										option 语文
+										option 写作与阅读
+										option 数学
+										option 英语
+										option 新概念
+										option 物理
+										option 化学
+								div.col-md-4
+									select#search_grade.form-control
+										option 小学
+										option 四年级
+										option 五年级
+										option 六年级
+										option 择校班
+										option 伟长班
+										option 初中
+										option 初中一
+										option 初中二
+										option 初中三
+										option 高中
+										option 高中一
+										option 高中二
+										option 高中三
+								div.col-md-4
+									button#search_select_btn.btn.btn-info(type="button") 查询
+						br
+						br
+						br
+						br
+						div.row
+							div.col-md-6
+								a.btn.btn-primary.disabled(href='/static') 统计情况
+							div.col-md-6
+								button.btn.btn-warning(data-toggle="modal", data-target="#myModal") 一键报名
+								div#myModal.modal.fade(tabindex="-1",role="dialog",aria-labelledby="myModalLabel",aria-hidden="true")
+									div.modal-dialog
+										div.modal-content
+											div.modal-header
+												button.close(type="button", data-dismiss="modal", aria-hidden="true") &times;
+												h4#myModalLabel.modal-title 苏胜教育报名表
+											div.modal-body(style="height:550px;overflow-y:auto;")
+												div
+													form.form-horizontal(role="form")
+														h4 基本信息
+														div.form-group
+															label.control-label.col-md-3(for="student_name") 名字 <font color='red'> * </font>
+															div.col-md-9
+																input#student_name.form-control(placeholder="请输入姓名",type="text")
+														div.form-group
+															label.control-label.col-md-3(for="school") 学校 <font color='red'> * </font>
+															div.col-md-9
+																input#school.form-control(placeholder="请输入学校",type="text")
+														div.form-group
+															label.control-label.col-md-3(for="grade") 年级 <font color='red'> * </font>
+															div.col-md-9
+																select#grade.form-control(onclick="add_lession_empty(this.id)")
+																	option 初中一
+																	option 初中二
+																	option 初中三
+																	option 高中一
+																	option 高中二
+																	option 高中三
+																	option 四年级
+																	option 五年级
+																	option 六年级
+																	option 择校班
+																	option 小学
+																	option 初中
+																	option 伟长班
+																	option 高中
+														div.form-group
+															label.control-label.col-md-3(for="telephone") 联系方式 </font> <font color='red'> * </font>
+															div.col-md-9
+																input#telephone.form-control(placeholder="请输入联系方式",type="text" onkeypress="keyPress()")
+														hr
+														div.row
+															div.col-md-3
+																h4 选课信息 <font color='red'> * </font>
+															div.col-md-3
+																h6#num_subjects 已添加了1门课
+															div.col-md-6(style="text-align:right;")
+																button.btn.btn-sm.btn-primary(type="button" onclick="add_div()") 添加+
+														div#add_subject_info
+															div#panel_1.panel.panel-default
+																div.panel-heading
+																	button#panel_close_1.close.panel_close(type="button") &times;
+																	h5 课程
+																div.panel-body
+																	div.row
+																		div.col-xs-4
+																			label.control-label 学科(或者特别班)
+																			select#add_subject_1.form-control.add_subject(onclick="add_lession_empty(this.id)")
+																				option 语文
+																				option 写作与阅读
+																				option 数学
+																				option 英语
+																				option 新概念
+																				option 物理
+																				option 化学
+																		div.col-xs-4
+																			label.control-label 学期
+																			select#add_semester_1.form-control.add_semester(onclick="add_lession_empty(this.id)")
+																				option 2017秋季
+																				option 2018寒假
+																				option 2018春季
+																				option 2018暑假
+																				option 2017暑假
+																		div.col-xs-4
+																			label.control-label 学区
+																			select#add_campus_1.form-control.add_campus(onclick="add_lession_empty(this.id)")
+																				option 文化宫
+																				option 园区
+																	div.row
+																		div.col-xs-3
+																			label.control-label 课程信息
+																		div.col-xs-9
+																			button#add_info_btn_1.btn.btn-xs.btn-info.add_info_btn(type="button" style="margin-top:4px" onclick = "search_add_info(this.id)") 获取
+																	div.row
+																		div.col-xs-12
+																			select#add_info_1.form-control.add_info
+														hr
+														h4 附加信息
+														div.form-group
+															label.control-label.col-md-3(for="introducer") 介绍人
+															div.col-md-9
+																input#introducer.form-control(placeholder="请输入介绍人姓名",type="text")
+														div.form-group
+															label.control-label.col-md-3(for="receptionist") 接待人
+															div.col-md-9
+																input#receptionist.form-control(placeholder="请输入接待人姓名",type="text")
+														div.form-group
+															label.control-label.col-md-3(for="comments") 备注
+															div.col-md-9
+																textarea#comments.form-control(placeholder="请输入备注",row="3")
+
+
+											div.modal-footer
+												button.btn.btn-default(type="button", data-dismiss="modal") 关闭
+												button#subject_submit.btn.btn-primary(type="button") 提交
+				div.col-md-9
+					h1 查询情况
+					hr
+					div#search_table

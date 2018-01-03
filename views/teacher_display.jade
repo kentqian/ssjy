@@ -1,0 +1,22 @@
+table.table.table-hover.scrolltable
+	thead
+		tr
+			th 姓名
+			th 学校
+			th 联系方式
+			th 报名时间
+			th 介绍人
+	tbody
+		for element in teacher_lession_list
+			tr
+				td 
+					b #{element.name}
+				td 
+					b #{element.school}
+				td 
+					b #{element.telephone}
+				td 
+					b #{element.register_date}
+				td 
+					b #{element.introducer}
+

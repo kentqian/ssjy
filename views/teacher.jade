@@ -1,0 +1,33 @@
+html
+	head
+		title #{user.staff_name}老师，您好！
+		meta(http-equiv="Content-Type" content="text/html; charset=utf-8")
+		script(type="text/javascript" src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js")
+		//- script(type="text/javascript" src="./javascripts/jquery.js")
+		script(type="text/javascript" src="http://apps.bdimg.com/libs/bootstrap/3.3.4/js/bootstrap.min.js")
+		//- script(type="text/javascript" src="./javascripts/bootstrap.js")
+		script(type="text/javascript" src="./javascripts/main_helper_function.js")
+		script(type="text/javascript" src="./javascripts/teacher.js")
+		link(type="text/css" rel="stylesheet" href="http://apps.bdimg.com/libs/bootstrap/3.3.4/css/bootstrap.min.css")
+		//- link(type="text/css" rel="stylesheet" href="./stylesheets/bootstrap.css")
+		link(type="text/css" rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/4.7.0/css/font-awesome.css")
+		//- link(type="text/css" rel="stylesheet" href="./stylesheets/font-awesome.css")
+		link(type="text/css" rel="stylesheet" href="./stylesheets/style.css")
+	body
+		nav.navbar.navbar-default(role="navigation")
+			div.container
+				div.navbar-header
+					a.navbar-brand(href="/")
+						img(src="./images/3.png" width="150px" height="30px")
+				ul.nav.navbar-nav.navbar-right
+					li
+						a(href="/users") <i class="fa fa-user-circle" aria-hidden="true"></i> #{user.staff_name}
+					li
+						a#btn_logout(href="#" onclick="logout()") <i class="fa fa-sign-out" aria-hidden="true"></i> 登 出
+		div.container
+			h2 个人班级人数情况
+				hr
+				select#teacher_lessions.form-control(onchange="teacher_lessions()")
+					for element in teacher_lessions
+						option #{element.semester} #{element.lession_section} #{element.grade} #{element.lession_time}
+				div#teacher_display

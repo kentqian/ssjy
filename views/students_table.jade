@@ -1,0 +1,33 @@
+table.table.table-hover.scrollTable
+	thead
+		tr
+			th 姓名
+			th 学校
+			th 年级
+			th 联系方式
+			th 学科
+			th 授课老师
+			th 学期
+			th 学区
+			th 时段
+	tbody
+		each element in student_list
+			tr
+				td 
+					a.tooltips(style="color:black" data-toggle="tooltip" title="<p>报名日期：#{element.register_date}</p><p>介绍人：#{element.introducer}</p><p>接待人：#{element.receptionist}</p><p>备注：#{element.comments}</p>") <b>#{element.name}</b>
+				td 
+					b #{element.school}
+				td 
+					b #{element.grade}
+				td 
+					b #{element.telephone}
+				td 
+					b #{element.subject}
+				td 
+					b #{element.teacher}
+				td 
+					b #{element.semester}(#{element.lession_section})
+				td 
+					b #{element.campus}
+				td 
+					b #{element.lession_time}

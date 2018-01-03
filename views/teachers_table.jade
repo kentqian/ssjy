@@ -1,0 +1,24 @@
+table.table.table-hover.scrolltable
+	thead
+		tr
+			th 教师姓名
+			th 学科
+			th 授课年级
+			th 学期
+			th 学区
+			th 时段
+	tbody
+		each element in teachers_list
+			tr
+				td 
+					b #{element.teacher}
+				td 
+					b #{element.subject}
+				td 
+					b #{element.grade}
+				td 
+					b #{element.semester} (#{element.lession_section})
+				td 
+					b #{element.campus}
+				td 
+					b #{element.lession_time}

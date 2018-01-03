@@ -1,0 +1,33 @@
+html
+	head
+		title #{user.staff_name}, 您好！
+		meta(http-equiv="Content-Type" content="text/html; charset=utf-8")
+		script(type="text/javascript" src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js")
+		script(type="text/javascript" src="javascripts/main_helper_function.js")
+		script(type="text/javascript" src="http://apps.bdimg.com/libs/bootstrap/3.3.4/js/bootstrap.min.js")
+		script(type="text/javascript" src="https://cdn.staticfile.org/Chart.js/2.5.0/Chart.min.js")
+		script(type="text/javascript" src="javascripts/static.js")
+		link(type="text/css" rel="stylesheet" href="http://apps.bdimg.com/libs/bootstrap/3.3.4/css/bootstrap.min.css")
+		link(type="text/css" rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/4.7.0/css/font-awesome.css")
+		link(type="text/css" rel="stylesheet" href="./stylesheets/style.css")
+		link(type="text/css" rel="stylesheet" href="./stylesheets/static.css")
+	body
+		nav.navbar.navbar-default(role="navigation")
+			div.container
+				div.navbar-header
+					a.navbar-brand(href="#") 
+						font(size="6px") 苏胜教育
+				ul.nav.navbar-nav.navbar-right
+					li
+						a(href="#") <i class="fa fa-user-circle" aria-hidden="true"></i> #{user.staff_name}
+					li
+						a#btn_logout(href="#") <i class="fa fa-sign-out" aria-hidden="true"></i> 登 出
+		div.container-fluid
+			h1 总统计
+			div.row
+				div.col-md-4.left
+					h4 总人数：300
+					h4 续报人数：150
+					h4 续报率：50%
+				div.col-md-8.right
+					canvas#myChart
